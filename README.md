@@ -6,7 +6,6 @@
 - [Vantaggi](#vantaggi-dellutilizzo-di-un-orchestratore)
 - [Considerazioni e Sfide](#considerazioni-e-sfide)
 - [Tecnologie e Strumenti](#tecnologie-e-strumenti)
-- [Esempio di codice](#esempio-di-codice)
 
 ## Introduzione
 
