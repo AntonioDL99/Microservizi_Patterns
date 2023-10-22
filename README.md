@@ -1,4 +1,4 @@
-# Nome del Progetto: Orchestrator for Chained Workflow Showcase
+# Orchestrator for Chained Workflow Showcase
 
 ## Introduzione
 
