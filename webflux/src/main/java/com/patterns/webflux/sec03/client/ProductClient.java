@@ -1,5 +1,7 @@
 package com.patterns.webflux.sec03.client;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -10,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class ProductClient {
+    private static final Logger logger = LoggerFactory.getLogger(ProductClient.class);
 
     private final WebClient client;
 
@@ -23,8 +26,12 @@ public class ProductClient {
         return this.client
                 .get()
                 .uri("{id}", id)
-                .retrieve()
-                .bodyToMono(Product.class)
-                .onErrorResume(ex -> Mono.empty());
+                .exchangeToMono(response -> {
+                    return response.bodyToMono(Product.class);
+                })
+                .onErrorResume(ex -> {
+                    logger.info("An error occurred while fetching product: {}", ex.getMessage(), ex);
+                    return Mono.empty();
+                });
     }
 }

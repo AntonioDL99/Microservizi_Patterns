@@ -9,6 +9,7 @@ import com.patterns.webflux.sec03.dto.OrderRequest;
 import com.patterns.webflux.sec03.dto.OrderResponse;
 import com.patterns.webflux.sec03.dto.Product;
 import com.patterns.webflux.sec03.dto.Status;
+import com.patterns.webflux.sec03.util.DebugUtil;
 import com.patterns.webflux.sec03.util.OrchestrationUtil;
 
 import reactor.core.publisher.Mono;
@@ -32,6 +33,7 @@ public class OrchestratorService {
                 .doOnNext(OrchestrationUtil::buildRequestContext)
                 .flatMap(fulfillmentService::placeOrder)
                 .doOnNext(this::doOrderPostProcessing)
+                .doOnNext(DebugUtil::print)
                 .map(this::tOrderResponse);
     }
 
