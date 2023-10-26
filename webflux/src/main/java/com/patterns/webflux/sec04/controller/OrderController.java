@@ -14,7 +14,7 @@ import com.patterns.webflux.sec04.service.OrchestratorService;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("sec03")
+@RequestMapping("sec04")
 public class OrderController {
 
     @Autowired

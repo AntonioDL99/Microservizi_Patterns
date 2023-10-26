@@ -17,7 +17,7 @@ public class InventoryClient {
     private final static String RESTORE = "restore";
     private final WebClient client;
 
-    public InventoryClient(@Value(value = "${sec03.inventory.service}") String baseUrl) {
+    public InventoryClient(@Value(value = "${sec04.inventory.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();

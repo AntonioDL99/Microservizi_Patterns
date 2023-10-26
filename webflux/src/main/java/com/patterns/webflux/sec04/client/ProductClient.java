@@ -16,7 +16,7 @@ public class ProductClient {
 
     private final WebClient client;
 
-    public ProductClient(@Value(value = "${sec03.product.service}") String baseUrl) {
+    public ProductClient(@Value(value = "${sec04.product.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
