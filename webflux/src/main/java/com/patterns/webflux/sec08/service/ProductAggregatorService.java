@@ -22,22 +22,19 @@ public class ProductAggregatorService {
     @Autowired
     private ReviewClient reviewClient;
 
-    public Mono<ProductAggregate> aggregate(Integer id){
+    public Mono<ProductAggregate> aggregate(Integer id) {
         return Mono.zip(
-               this.productClient.getProduct(id),
-               this.reviewClient.getReviews(id)
-        )
-        .map(t -> toDto(t.getT1(), t.getT2()));
+                this.productClient.getProduct(id),
+                this.reviewClient.getReviews(id))
+                .map(t -> toDto(t.getT1(), t.getT2()));
     }
 
-    private ProductAggregate toDto(Product product, List<Review> reviews){
+    private ProductAggregate toDto(Product product, List<Review> reviews) {
         return ProductAggregate.create(
                 product.getId(),
                 product.getCategory(),
                 product.getDescription(),
-                reviews
-        );
+                reviews);
     }
-
 
 }

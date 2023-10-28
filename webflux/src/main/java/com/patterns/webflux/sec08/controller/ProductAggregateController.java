@@ -13,7 +13,7 @@ import com.patterns.webflux.sec08.service.ProductAggregatorService;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("sec07")
+@RequestMapping("sec08")
 public class ProductAggregateController {
 
     @Autowired
