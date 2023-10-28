@@ -1,5 +1,7 @@
 package com.patterns.webflux.sec06.client;
 
+import java.time.Duration;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,7 +27,7 @@ public class ProductClient {
                 .uri("{id}", id)
                 .retrieve()
                 .bodyToMono(Product.class)
+                .timeout(Duration.ofMillis(500))
                 .onErrorResume(ex -> Mono.empty());
     }
-
 }

@@ -1,5 +1,6 @@
 package com.patterns.webflux.sec06.client;
 
+import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ReviewClient {
                 .retrieve()
                 .bodyToFlux(Review.class)
                 .collectList()
+                .timeout(Duration.ofMillis(500))
                 .onErrorReturn(Collections.emptyList());
     }
-
 }
