@@ -1,10 +1,10 @@
-package com.patterns.webflux.sec07.client;
+package com.patterns.webflux.sec08.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.patterns.webflux.sec07.dto.Product;
+import com.patterns.webflux.sec08.dto.Product;
 
 import reactor.core.publisher.Mono;
 
@@ -13,7 +13,7 @@ public class ProductClient {
 
     private final WebClient client;
 
-    public ProductClient(@Value("${sec07.product.service}") String baseUrl) {
+    public ProductClient(@Value("${sec08.product.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();

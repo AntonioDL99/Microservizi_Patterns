@@ -1,4 +1,4 @@
-package com.patterns.webflux.sec07.controller;
+package com.patterns.webflux.sec08.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.patterns.webflux.sec07.dto.ProductAggregate;
-import com.patterns.webflux.sec07.service.ProductAggregatorService;
+import com.patterns.webflux.sec08.dto.ProductAggregate;
+import com.patterns.webflux.sec08.service.ProductAggregatorService;
 
 import reactor.core.publisher.Mono;
 
