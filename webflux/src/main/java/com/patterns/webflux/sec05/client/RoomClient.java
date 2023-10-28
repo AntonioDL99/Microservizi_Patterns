@@ -15,7 +15,7 @@ public class RoomClient {
 
     private final WebClient client;
 
-    public RoomClient(@Value("${car.sec05.service}") String baseUrl) {
+    public RoomClient(@Value("${sec05.room.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();

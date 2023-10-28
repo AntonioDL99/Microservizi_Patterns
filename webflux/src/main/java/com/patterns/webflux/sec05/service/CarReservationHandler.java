@@ -1,6 +1,7 @@
 package com.patterns.webflux.sec05.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.patterns.webflux.sec05.client.CarClient;
 import com.patterns.webflux.sec05.dto.CarReservationRequest;
@@ -11,6 +12,7 @@ import com.patterns.webflux.sec05.dto.ReservationType;
 
 import reactor.core.publisher.Flux;
 
+@Service
 public class CarReservationHandler extends ReservationHandler {
 
     @Autowired
@@ -18,7 +20,7 @@ public class CarReservationHandler extends ReservationHandler {
 
     @Override
     protected ReservationType getType() {
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+        return ReservationType.CAR;
     }
 
     @Override

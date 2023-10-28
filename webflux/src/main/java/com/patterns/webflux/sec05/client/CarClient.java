@@ -15,7 +15,7 @@ public class CarClient {
 
     private final WebClient client;
 
-    public CarClient(@Value("${car.sec05.service}") String baseUrl) {
+    public CarClient(@Value("${sec05.car.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
