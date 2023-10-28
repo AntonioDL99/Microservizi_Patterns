@@ -3,7 +3,7 @@ package com.patterns.webflux;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.patterns.webflux.sec05")
+@SpringBootApplication(scanBasePackages = "com.patterns.webflux.sec06")
 public class WebfluxApplication {
 
 	public static void main(String[] args) {
