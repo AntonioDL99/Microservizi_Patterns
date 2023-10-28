@@ -1,4 +1,4 @@
-package com.patterns.webflux.sec06.dto;
+package com.patterns.webflux.sec07.dto;
 
 import lombok.Data;
 import lombok.ToString;

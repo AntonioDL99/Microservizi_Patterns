@@ -1,15 +1,15 @@
-package com.patterns.webflux.sec06.service;
+package com.patterns.webflux.sec07.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.patterns.webflux.sec06.client.ProductClient;
-import com.patterns.webflux.sec06.client.ReviewClient;
-import com.patterns.webflux.sec06.dto.Product;
-import com.patterns.webflux.sec06.dto.ProductAggregate;
-import com.patterns.webflux.sec06.dto.Review;
+import com.patterns.webflux.sec07.client.ProductClient;
+import com.patterns.webflux.sec07.client.ReviewClient;
+import com.patterns.webflux.sec07.dto.Product;
+import com.patterns.webflux.sec07.dto.ProductAggregate;
+import com.patterns.webflux.sec07.dto.Review;
 
 import reactor.core.publisher.Mono;
 
@@ -36,4 +36,5 @@ public class ProductAggregatorService {
                 product.getDescription(),
                 reviews);
     }
+
 }

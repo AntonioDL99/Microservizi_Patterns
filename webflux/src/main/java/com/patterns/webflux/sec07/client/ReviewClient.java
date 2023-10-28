@@ -1,23 +1,25 @@
-package com.patterns.webflux.sec06.client;
+package com.patterns.webflux.sec07.client;
 
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.patterns.webflux.sec06.dto.Review;
+import com.patterns.webflux.sec07.dto.Review;
 
 import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
 
 @Service
 public class ReviewClient {
 
     private final WebClient client;
 
-    public ReviewClient(@Value("${sec06.review.service}") String baseUrl) {
+    public ReviewClient(@Value("${sec07.review.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -28,9 +30,11 @@ public class ReviewClient {
                 .get()
                 .uri("{id}", id)
                 .retrieve()
+                .onStatus(HttpStatus::is4xxClientError, response -> Mono.empty())
                 .bodyToFlux(Review.class)
                 .collectList()
-                .timeout(Duration.ofMillis(500))
+                .retryWhen(Retry.fixedDelay(5, Duration.ofSeconds(1)))
+                .timeout(Duration.ofMillis(300))
                 .onErrorReturn(Collections.emptyList());
     }
 }
