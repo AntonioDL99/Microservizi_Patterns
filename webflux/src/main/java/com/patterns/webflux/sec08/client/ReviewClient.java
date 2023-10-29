@@ -11,6 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.patterns.webflux.sec08.dto.Review;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -24,6 +25,7 @@ public class ReviewClient {
                 .build();
     }
 
+    @CircuitBreaker(name = "review-service", fallbackMethod = "fallBackReview")
     public Mono<List<Review>> getReviews(Integer id) {
         return this.client
                 .get()
@@ -33,7 +35,11 @@ public class ReviewClient {
                 .bodyToFlux(Review.class)
                 .collectList()
                 .retry(5)
-                .timeout(Duration.ofMillis(300))
-                .onErrorReturn(Collections.emptyList());
+                .timeout(Duration.ofMillis(300));
+    }
+
+    public Mono<List<Review>> fallBackReview(Integer id, Throwable ex) {
+        System.out.println("Fallback method called" + ex.getMessage());
+        return Mono.just(Collections.emptyList());
     }
 }
