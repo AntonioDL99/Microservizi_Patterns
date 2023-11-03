@@ -1,15 +1,17 @@
-package com.vinsguru.webfluxpatterns.sec07.service;
-
-import com.vinsguru.webfluxpatterns.sec07.client.ProductClient;
-import com.vinsguru.webfluxpatterns.sec07.client.ReviewClient;
-import com.vinsguru.webfluxpatterns.sec07.dto.Product;
-import com.vinsguru.webfluxpatterns.sec07.dto.ProductAggregate;
-import com.vinsguru.webfluxpatterns.sec07.dto.Review;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
+package com.patterns.webflux.service;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.patterns.webflux.client.ProductClient;
+import com.patterns.webflux.client.ReviewClient;
+import com.patterns.webflux.dto.Product;
+import com.patterns.webflux.dto.ProductAggregate;
+import com.patterns.webflux.dto.Review;
+
+import reactor.core.publisher.Mono;
 
 @Service
 public class ProductAggregatorService {

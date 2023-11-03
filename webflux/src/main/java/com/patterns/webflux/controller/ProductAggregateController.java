@@ -1,17 +1,19 @@
-package com.vinsguru.webfluxpatterns.sec07.controller;
+package com.patterns.webflux.controller;
 
-import com.vinsguru.webfluxpatterns.sec07.dto.ProductAggregate;
-import com.vinsguru.webfluxpatterns.sec07.service.ProductAggregatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.patterns.webflux.dto.ProductAggregate;
+import com.patterns.webflux.service.ProductAggregatorService;
+
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("sec07")
+@RequestMapping("sec09")
 public class ProductAggregateController {
 
     @Autowired
@@ -23,5 +25,4 @@ public class ProductAggregateController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
-
 }
