@@ -33,7 +33,6 @@ public class ReviewClient {
                 .onStatus(HttpStatus::is4xxClientError, response -> Mono.empty())
                 .bodyToFlux(Review.class)
                 .collectList();
-                
     }
     
     public Mono<List<Review>> fallback(Integer id, Throwable ex) {
